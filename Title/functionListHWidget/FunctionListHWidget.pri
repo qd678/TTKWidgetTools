@@ -18,8 +18,13 @@
 
 INCLUDEPATH += $$PWD
 
-include($$PWD/functionAnimationHWidget/FunctionAnimationHWidget.pri)
-include($$PWD/functionAnimationVWidget/FunctionAnimationVWidget.pri)
-include($$PWD/functionListHWidget/FunctionListHWidget.pri)
-include($$PWD/functionListVWidget/FunctionListVWidget.pri)
-include($$PWD/functionToolboxWidget/FunctionToolboxWidget.pri)
+SOURCES += \
+    $$PWD/ttkfunctionlisthwidget.cpp \
+    $$PWD/ttkfunctionlisthwindow.cpp
+
+HEADERS  += \
+    $$PWD/ttkfunctionlisthwidget.h \
+    $$PWD/ttkfunctionlisthwindow.h
+
+FORMS    += \
+    $$PWD/ttkfunctionlisthwindow.ui

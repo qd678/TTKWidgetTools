@@ -18,8 +18,14 @@
 
 INCLUDEPATH += $$PWD
 
-include($$PWD/functionAnimationHWidget/FunctionAnimationHWidget.pri)
-include($$PWD/functionAnimationVWidget/FunctionAnimationVWidget.pri)
-include($$PWD/functionListHWidget/FunctionListHWidget.pri)
-include($$PWD/functionListVWidget/FunctionListVWidget.pri)
-include($$PWD/functionToolboxWidget/FunctionToolboxWidget.pri)
+SOURCES += \
+    $$PWD/ttkpaintmeterwidget.cpp \
+    $$PWD/ttkpaintmeterwindow.cpp
+
+HEADERS  += \
+    $$PWD/ttkpaintmeterwidget.h \
+    $$PWD/ttkpaintmeterwindow.h
+
+FORMS    += \
+    $$PWD/ttkpaintmeterwindow.ui
+    

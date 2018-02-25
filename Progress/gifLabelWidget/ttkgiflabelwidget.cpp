@@ -1,6 +1,7 @@
 #include "ttkgiflabelwidget.h"
 
 #include <QTimer>
+#include <QPainter>
 
 #define GIF_BALLON_WHITE        35
 #define GIF_CICLE_BLUE          58
@@ -92,6 +93,20 @@ bool TTKGifLabelWidget::getInfinited() const
     return m_infinited;
 }
 
+void TTKGifLabelWidget::run(bool run)
+{
+    if(run)
+    {
+        show();
+        start();
+    }
+    else
+    {
+        hide();
+        stop();
+    }
+}
+
 void TTKGifLabelWidget::start()
 {
     m_timer->start();
@@ -115,8 +130,9 @@ void TTKGifLabelWidget::timeout()
                 {
                     break;
                 }
-                setStyleSheet(QString("background-image: url(':/gif/lb_ballon_white'); \
-                                       margin-left:-%1px;").arg(GIF_BALLON_WHITE*m_index));
+
+                m_renderer = QPixmap(":/gif/lb_ballon_white").copy(GIF_BALLON_WHITE*m_index, 0, width(), height());
+                update();
                 break;
             }
         case Gif_Cicle_Blue:
@@ -125,8 +141,9 @@ void TTKGifLabelWidget::timeout()
                 {
                     break;
                 }
-                setStyleSheet(QString("background-image: url(':/gif/lb_cicle_blue'); \
-                                       margin-left:-%1px;").arg(GIF_CICLE_BLUE*m_index));
+
+                m_renderer = QPixmap(":/gif/lb_cicle_blue").copy(GIF_CICLE_BLUE*m_index, 0, width(), height());
+                update();
                 break;
             }
         case Gif_Rice_Font_White:
@@ -135,9 +152,9 @@ void TTKGifLabelWidget::timeout()
                 {
                     break;
                 }
-                setStyleSheet(QString("background-image: url(':/gif/lb_rice_font_white'); \
-                                       margin-left:-%1px;").arg(GIF_RICE_FONT_WHITE*m_index));
 
+                m_renderer = QPixmap(":/gif/lb_rice_font_white").copy(GIF_RICE_FONT_WHITE*m_index, 0, width(), height());
+                update();
                 break;
             }
         case Gif_Rice_Font_Black_Big:
@@ -146,8 +163,9 @@ void TTKGifLabelWidget::timeout()
                 {
                     break;
                 }
-                setStyleSheet(QString("background-image: url(':/gif/lb_rice_font_black_big'); \
-                                       margin-left:-%1px;").arg(GIF_RICE_FONT_BLACK_BIG*m_index));
+
+                m_renderer = QPixmap(":/gif/lb_rice_font_black_big").copy(GIF_RICE_FONT_BLACK_BIG*m_index, 0, width(), height());
+                update();
                 break;
             }
         case Gif_Rice_Font_Black:
@@ -156,8 +174,9 @@ void TTKGifLabelWidget::timeout()
                 {
                     break;
                 }
-                setStyleSheet(QString("background-image: url(':/gif/lb_rice_font_black'); \
-                                       margin-left:-%1px;").arg(GIF_RICE_FONT_BLACK*m_index));
+
+                m_renderer = QPixmap(":/gif/lb_rice_font_black").copy(GIF_RICE_FONT_BLACK*m_index, 0, width(), height());
+                update();
                 break;
             }
         case Gif_Hourglass_White:
@@ -166,8 +185,9 @@ void TTKGifLabelWidget::timeout()
                 {
                     break;
                 }
-                setStyleSheet(QString("background-image: url(':/gif/lb_hourglass_white'); \
-                                       margin-left:-%1px;").arg(GIF_HOURGLASS_WHITE*m_index));
+
+                m_renderer = QPixmap(":/gif/lb_hourglass_white").copy(GIF_HOURGLASS_WHITE*m_index, 0, width(), height());
+                update();
                 break;
             }
         case Gif_Radio_Blue:
@@ -176,8 +196,9 @@ void TTKGifLabelWidget::timeout()
                 {
                     break;
                 }
-                setStyleSheet(QString("background-image: url(':/gif/lb_radio_blue'); \
-                                       margin-left:-%1px;").arg(GIF_RADIO_BLUE*m_index));
+
+                m_renderer = QPixmap(":/gif/lb_radio_blue").copy(GIF_RADIO_BLUE*m_index, 0, width(), height());
+                update();
                 break;
             }
         case Gif_Check_Blue:
@@ -186,8 +207,9 @@ void TTKGifLabelWidget::timeout()
                 {
                     break;
                 }
-                setStyleSheet(QString("background-image: url(':/gif/lb_check_blue'); \
-                                       margin-left:-%1px;").arg(GIF_CHECK_BLUE*m_index));
+
+                m_renderer = QPixmap(":/gif/lb_check_blue").copy(GIF_CHECK_BLUE*m_index, 0, width(), height());
+                update();
                 break;
             }
         case Gif_Record_red:
@@ -196,8 +218,9 @@ void TTKGifLabelWidget::timeout()
                 {
                     break;
                 }
-                setStyleSheet(QString("background-image: url(':/gif/lb_record_red'); \
-                                       margin-left:-%1px;").arg(GIF_RECORD_RED*m_index));
+
+                m_renderer = QPixmap(":/gif/lb_record_red").copy(GIF_RECORD_RED*m_index, 0, width(), height());
+                update();
                 break;
             }
         case Gif_Close_White:
@@ -206,12 +229,21 @@ void TTKGifLabelWidget::timeout()
                 {
                     break;
                 }
-                setStyleSheet(QString("background-image: url(':/gif/lb_close_white'); \
-                                       margin-left:-%1px;").arg(GIF_CLOSE_WHITE_WIDTH*m_index));
+
+                m_renderer = QPixmap(":/gif/lb_close_white").copy(GIF_CLOSE_WHITE_WIDTH*m_index, 0, width(), height());
+                update();
                 break;
             }
         default: break;
     }
+}
+
+void TTKGifLabelWidget::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event);
+
+    QPainter painter(this);
+    painter.drawPixmap(0, 0, m_renderer);
 }
 
 bool TTKGifLabelWidget::infinitedModeCheck()
