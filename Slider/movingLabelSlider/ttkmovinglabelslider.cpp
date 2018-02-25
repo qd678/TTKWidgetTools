@@ -3,9 +3,18 @@
 #include <QDateTime>
 
 TTKMovingLabelSlider::TTKMovingLabelSlider(QWidget *parent)
-    : TTKMovingLabelSlider(Qt::Horizontal, parent)
+    : TTKClickedSlider(Qt::Horizontal, parent)
 {
+    setMouseTracking(true);
 
+    m_isMoving = false;
+    m_orientation = Qt::Horizontal;
+    m_textLabel = new QLabel(this);
+    m_textLabel->setWindowFlags( Qt::Window | Qt::FramelessWindowHint | Qt::Tool);
+    m_textLabel->setGeometry(0, 0, 40, 20);
+    m_textLabel->setAlignment(Qt::AlignCenter);
+    m_textLabel->setFocusPolicy(Qt::NoFocus);
+    m_textLabel->setStyleSheet("QLabel{ color:#888888; background-color:#FFE6E6; border:1px solid gray;}");
 }
 
 TTKMovingLabelSlider::TTKMovingLabelSlider(Qt::Orientation orientation, QWidget *parent)

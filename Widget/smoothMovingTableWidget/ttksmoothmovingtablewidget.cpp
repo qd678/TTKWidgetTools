@@ -11,8 +11,8 @@ TTKSmoothMovingTableWidget::TTKSmoothMovingTableWidget(QWidget *parent)
     m_deltaValue = 0;
     m_previousValue = 0;
     m_isFirstInit = true;
-    m_slowAnimation = nullptr;
-    m_scrollBar = nullptr;
+    m_slowAnimation = 0;
+    m_scrollBar = 0;
     m_animationTimer = new QTimer(this);
     m_animationTimer->setInterval(100);
 

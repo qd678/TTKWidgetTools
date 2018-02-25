@@ -18,8 +18,18 @@ TTKToastLabel::TTKToastLabel(QWidget *parent)
 }
 
 TTKToastLabel::TTKToastLabel(const QString &text, QWidget *parent)
-    : TTKToastLabel(parent)
+    : QLabel(parent)
 {
+    setWindowFlags( Qt::Window | Qt::FramelessWindowHint );
+    setAttribute(Qt::WA_TranslucentBackground);
+    setAttribute(Qt::WA_QuitOnClose);
+    setAttribute(Qt::WA_DeleteOnClose);
+
+    m_font = font();
+    connect(&m_timer, SIGNAL(timeout()), SLOT(closeAnimation()));
+    m_timer.setInterval(1000);
+    m_timer.start();
+
     setText(text);
 }
 

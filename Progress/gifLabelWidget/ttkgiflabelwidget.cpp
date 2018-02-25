@@ -29,8 +29,18 @@ TTKGifLabelWidget::TTKGifLabelWidget(QWidget *parent)
 }
 
 TTKGifLabelWidget::TTKGifLabelWidget(Type type, QWidget *parent)
-    : TTKGifLabelWidget(parent)
+    : QLabel(parent)
 {
+    m_index = -1;
+    m_isRunning = false;
+    m_infinited = true;
+
+    setFixedSize(GIF_CICLE_BLUE, GIF_CICLE_BLUE);
+
+    m_timer = new QTimer(this);
+    m_timer->setInterval(100);
+    connect(m_timer, SIGNAL(timeout()), SLOT(timeout()));
+
     setType(type);
 }
 

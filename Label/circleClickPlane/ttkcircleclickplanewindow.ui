@@ -13,10 +13,16 @@
   <property name="windowTitle">
    <string>TTKCircleClickPlaneWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="TTKCircleClickPlane" name="label">
+     <widget class="TTKCircleClickPlane" name="label" native="true">
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0646766 rgba(13, 88, 131, 240), stop:1 rgba(255, 255, 255, 128));</string>
+      </property>
      </widget>
     </item>
    </layout>

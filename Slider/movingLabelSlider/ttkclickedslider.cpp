@@ -3,9 +3,11 @@
 #include <QMouseEvent>
 
 TTKClickedSlider::TTKClickedSlider(QWidget *parent)
-    : TTKClickedSlider(Qt::Horizontal, parent)
+    : QSlider(Qt::Horizontal, parent)
 {
-
+    setCursor(QCursor(Qt::PointingHandCursor));
+    m_mousePress = false;
+    m_value = 0;
 }
 
 TTKClickedSlider::TTKClickedSlider(Qt::Orientation orientation, QWidget *parent)
