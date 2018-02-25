@@ -7,9 +7,15 @@
 #define HEIGHT 4
 
 TTKMoveWidget::TTKMoveWidget(QWidget *parent)
-    : TTKMoveWidget(true, parent)
+    : QWidget(parent)
 {
+    ///Remove the title bar
+    setWindowFlags( Qt::Window | Qt::FramelessWindowHint );
+    setAttribute(Qt::WA_TranslucentBackground, true);
 
+    m_moveOption = false;
+    m_leftButtonPress = false;
+    m_showShadow = true;
 }
 
 TTKMoveWidget::TTKMoveWidget(bool transparent, QWidget *parent)
