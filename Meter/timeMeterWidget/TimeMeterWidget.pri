@@ -18,8 +18,14 @@
 
 INCLUDEPATH += $$PWD
 
-include($$PWD/functionAnimationHWidget/FunctionAnimationHWidget.pri)
-include($$PWD/functionAnimationVWidget/FunctionAnimationVWidget.pri)
-include($$PWD/functionListHWidget/FunctionListHWidget.pri)
-include($$PWD/functionListVWidget/FunctionListVWidget.pri)
-include($$PWD/functionToolboxWidget/FunctionToolboxWidget.pri)
+SOURCES += \
+    $$PWD/ttktimemeterwidget.cpp \
+    $$PWD/ttktimemeterwindow.cpp
+
+HEADERS  += \
+    $$PWD/ttktimemeterwidget.h \
+    $$PWD/ttktimemeterwindow.h
+
+FORMS    += \
+    $$PWD/ttktimemeterwindow.ui
+    

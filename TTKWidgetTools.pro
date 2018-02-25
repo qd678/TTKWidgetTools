@@ -50,6 +50,7 @@ INCLUDEPATH += $$PWD
 
 include(Button/Button.pri)
 include(Label/Label.pri)
+include(Meter/Meter.pri)
 include(Progress/Progress.pri)
 include(Slider/Slider.pri)
 include(Title/Title.pri)

@@ -41,6 +41,14 @@ MainWindow::MainWindow(QWidget *parent)
     group->addButton(ui->pushButton_27, 27);
     group->addButton(ui->pushButton_28, 28);
     group->addButton(ui->pushButton_29, 29);
+    group->addButton(ui->pushButton_30, 30);
+    group->addButton(ui->pushButton_31, 31);
+    group->addButton(ui->pushButton_32, 32);
+    group->addButton(ui->pushButton_33, 33);
+    group->addButton(ui->pushButton_34, 34);
+    group->addButton(ui->pushButton_35, 35);
+    group->addButton(ui->pushButton_36, 36);
+    group->addButton(ui->pushButton_37, 37);
 
     connect(group, SIGNAL(buttonClicked(int)), SLOT(changed(int)));
 
@@ -114,6 +122,22 @@ void MainWindow::changed(int index)
         case 28:(new TTKColorTablePlaneWindow(this))->show();
             break;
         case 29:(new TTKFunctionAnimationVWindow(this))->show();
+            break;
+        case 30:(new TTKFunctionListHWindow(this))->show();
+            break;
+        case 31:(new TTKFunctionListVWindow(this))->show();
+            break;
+        case 32:(new TTKFunctionToolBoxWindow(this))->show();
+            break;
+        case 33:(new TTKPictureFlowWindow(this))->show();
+            break;
+        case 34:(new TTKSpeedMeterWindow(this))->show();
+            break;
+        case 35:(new TTKTimeMeterWindow(this))->show();
+            break;
+        case 36:(new TTKPaintMeterWindow(this))->show();
+            break;
+        case 37:(new TTKRadarMeterWindow(this))->show();
             break;
         default:
             break;
